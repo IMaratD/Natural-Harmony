@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg:#f7fafc;
+  --card:#fff;
+  --accent:#2b8aef;
+  --muted:#6b7280;
+}
+
+*{box-sizing:border-box}
+html,body,app-root{height:100%}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto; margin:0; background:var(--bg); color:#111}
+.container{max-width:980px;margin:36px auto;padding:24px}
+.header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.h1{font-size:20px;font-weight:700}
+.card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(17,24,39,0.06)}
+.nav{display:flex;gap:10px;align-items:center}
+.btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer}
+.small{font-size:13px;color:var(--muted)}
+.footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+.question{margin:18px 0}
+.options{display:flex;flex-direction:column;gap:8px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
