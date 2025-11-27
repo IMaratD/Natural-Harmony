@@ -1,59 +1,39 @@
-# NaturalHarmony
+# Natural Harmony (v0.2 — обновление опросника)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+Проект создан на Angular **19.2** и использует **standalone components**.
 
-## Development server
+## 🚀 Стек технологий
+- Angular 19.2
+- TypeScript 5.8
+- SCSS
+- Standalone routing
+- Lightweight health questionnaire
 
-To start a local development server, run:
+## 📋 Описание проекта
+Natural Harmony — это мини-сервис, который позволяет оценить влияние пищевых привычек и образа жизни на энергию и самочувствие.
 
-```bash
-ng serve
-```
+В основе — опрос из **15 вопросов**, каждый из которых оценивается от 0 до 3 баллов.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Итоговая сумма переводится в рекомендации.
 
-## Code scaffolding
+## 🔢 Градация итогов
+| Баллы | Уровень | Описание |
+|-------|---------|----------|
+| 0–10 | Отлично | Привычки поддерживают высокую энергию |
+| 11–22 | Хорошо | Есть детали, которые можно улучшить |
+| 23–33 | Требует улучшений | Много факторов влияет на состояние |
+| 34+ | Нужна корректировка | Текущий режим снижает энергию |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📁 Структура проекта
+- `/src/app/home` — главная страница  
+- `/src/app/quiz` — опросник  
+- `/src/app/result` — результаты  
+- `/src/app/profile` — профиль (в будущем)  
+- `/src/app/services/recommendation.service.ts` — рекомендации  
 
-```bash
-ng generate component component-name
-```
+## 🧩 Установка
+- npm install
+- npm start
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Проект запустится на:  
+http://localhost:4200/

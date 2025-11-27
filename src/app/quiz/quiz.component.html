@@ -1,1 +1,30 @@
-<p>quiz works!</p>
+<div class="quiz-wrap">
+    <h2>Опрос — как питание влияет на вашу энергию</h2>
+    <p class="small">Ответьте честно — это займёт 3–5 минут.</p>
+  
+    <div class="question-card">
+      <div class="q-index">Вопрос {{currentIndex + 1}} / {{questions.length}}</div>
+      <div class="q-text">{{ questions[currentIndex].text }}</div>
+  
+      <div class="options">
+        <label *ngFor="let opt of questions[currentIndex].options" class="opt">
+          <input type="radio"
+                 name="opt-{{currentIndex}}"
+                 [checked]="answers[currentIndex] === opt.value"
+                 (change)="selectAnswer(opt.value)" />
+          {{opt.text}}
+        </label>
+      </div>
+  
+      <div class="controls">
+        <button class="btn" (click)="prev()" [disabled]="currentIndex===0">Назад</button>
+        <button class="btn" (click)="next()" [disabled]="currentIndex===questions.length-1">Далее</button>
+        <button class="btn" (click)="finish()" style="background:#2e7d32">Завершить</button>
+      </div>
+  
+      <div style="margin-top:8px">
+        <button class="linklike" (click)="resetAnswers()">Сбросить ответы</button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,1 +1,32 @@
-<p>result works!</p>
+<div *ngIf="result; else noData" class="result-wrap">
+    <div class="card">
+      <h3>Сводка: {{ result.summary }}</h3>
+  
+      <div *ngIf="result.redZones?.length">
+        <strong>Красные зоны</strong>
+        <ul>
+          <li *ngFor="let r of result.redZones">{{ r }}</li>
+        </ul>
+      </div>
+  
+      <div *ngIf="result.recommendations?.length">
+        <strong>Рекомендации</strong>
+        <ul>
+          <li *ngFor="let r of result.recommendations">{{ r }}</li>
+        </ul>
+      </div>
+  
+      <div class="actions">
+        <button class="btn" (click)="downloadPdf()">Скачать PDF</button>
+        <button class="btn" (click)="backHome()">На главную</button>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #noData>
+    <div class="card">
+      <p>Нет данных для отображения. Пройдите опрос.</p>
+      <button class="btn" routerLink="/quiz">Пройти опрос</button>
+    </div>
+  </ng-template>
+  

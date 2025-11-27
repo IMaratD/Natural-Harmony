@@ -1,29 +1,28 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './shared/header.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent],
   template: `
-  <div class="container">
-    <div class="header">
-      <div>
-        <div class="h1">Natural Harmony</div>
-        <div class="small">Мини-анализ питания и уровень энергии</div>
-      </div>
-      <header-comp></header-comp>
-    </div>
+    <div class="app-wrap">
+      <header class="top">
+        <div class="brand">
+          <div class="title">Natural Harmony</div>
+          <div class="subtitle">Мини-анализ питания и уровень энергии</div>
+        </div>
+        <header-comp></header-comp>
+      </header>
 
-    <div class="card">
-      <router-outlet></router-outlet>
-    </div>
+      <main class="main">
+        <router-outlet></router-outlet>
+      </main>
 
-    <div class="footer">
-      Основано на открытых источниках и 14-летнем опыте автора (диабет 1 типа).
+      <footer class="footer">Основано на открытых источниках и 14-летнем опыте автора (диабет 1 типа).</footer>
     </div>
-  </div>
-  `
+  `,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {}

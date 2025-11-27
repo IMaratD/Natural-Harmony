@@ -1,1 +1,20 @@
-<p>profile works!</p>
+<div class="profile-card">
+    <h2>Личный кабинет</h2>
+  
+    <label>Имя:
+      <input [(ngModel)]="name" placeholder="Введите имя" />
+    </label>
+  
+    <label class="checkbox">
+      <input type="checkbox" [(ngModel)]="isDiabetic" />
+      Я — диабетик
+    </label>
+  
+    <div class="controls">
+      <button class="btn" (click)="save()">Сохранить</button>
+      <a class="back" routerLink="/">На главную</a>
+    </div>
+  
+    <p class="saved" *ngIf="saved">✔ Сохранено!</p>
+  </div>
+  

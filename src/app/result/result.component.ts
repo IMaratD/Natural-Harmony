@@ -1,55 +1,65 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import jsPDF from 'jspdf';
+import { loadOpenSans } from './pdf-font-loader';
 
 @Component({
   standalone: true,
-  selector: 'result-comp',
+  selector: 'app-result',
   imports: [CommonModule],
-  template: `
-    <div class="card">
-      <h3>Результат: {{result.summary}}</h3>
-      <div *ngIf="result.redZones?.length">
-        <strong>Красные зоны:</strong>
-        <ul>
-          <li *ngFor="let r of result.redZones">{{r}}</li>
-        </ul>
-      </div>
-
-      <div *ngIf="result.recommendations?.length">
-        <strong>Рекомендации:</strong>
-        <ul>
-          <li *ngFor="let rec of result.recommendations">{{rec}}</li>
-        </ul>
-      </div>
-
-      <div style="margin-top:12px">
-        <button class="btn" (click)="downloadPdf()">Скачать PDF</button>
-        <button class="btn" (click)="restart.emit()">Пройти снова</button>
-      </div>
-    </div>
-  `
+  templateUrl: './result.component.html',
+  styleUrls: ['./result.component.scss']
 })
 export class ResultComponent {
-    @Input() result: any = {summary:'', redZones:[], recommendations:[]};
-    @Output() download = new EventEmitter<any>();
-    @Output() restart = new EventEmitter<void>();
-  
-    downloadPdf() {
-    const pdf = new jsPDF();
-    pdf.setFontSize(16);
-    pdf.text('Natural Harmony — Результаты', 10, 10);
-    pdf.setFontSize(12);
-    pdf.text(`Сводка: ${this.result.summary}`, 10, 20);
-    let y = 30;
-    if(this.result.redZones?.length){
-      pdf.text('Красные зоны:', 10, y); y+=8;
-      this.result.redZones.forEach((z:any)=>{ pdf.text('- '+z, 10, y); y+=7; });
-      y+=6;
+  result: any = null;
+
+  constructor(private router: Router) {
+    // сперва смотрим navigation state
+    const nav = this.router.getCurrentNavigation?.();
+    this.result = (nav?.extras && nav.extras.state && nav.extras.state['result']) ?? null;
+
+    // если ничего нет — пробуем sessionStorage (finish() сохраняет туда)
+    if (!this.result) {
+      const raw = sessionStorage.getItem('lastResult');
+      if (raw) this.result = JSON.parse(raw);
     }
-    pdf.text('Рекомендации:', 10, y); y+=8;
-    this.result.recommendations.forEach((r:any)=>{ pdf.text('- '+r, 10, y); y+=7; });
+  }
+
+  backHome() {
+    this.router.navigate(['/']);
+  }
+
+  async downloadPdf() {
+    if (!this.result) return;
+    const pdf = new jsPDF();
+    await loadOpenSans(pdf);
+    pdf.setFont('OpenSans', 'normal');
+    pdf.setFontSize(16);
+    pdf.text('Natural Harmony — Результат', 10, 14);
+
+    pdf.setFontSize(12);
+    let y = 30;
+    pdf.text(`Сводка: ${this.result.summary}`, 10, y);
+    y += 10;
+
+    if (this.result.redZones?.length) {
+      pdf.text('Красные зоны:', 10, y);
+      y += 8;
+      for (const z of this.result.redZones) {
+        pdf.text(`• ${z}`, 15, y);
+        y += 7;
+      }
+      y += 6;
+    }
+
+    pdf.text('Рекомендации:', 10, y);
+    y += 8;
+    for (const r of this.result.recommendations) {
+      pdf.text(`• ${r}`, 15, y);
+      y += 7;
+    }
+
     pdf.save('natural-harmony-result.pdf');
-    this.download.emit(this.result);
   }
 }
