@@ -17,9 +17,23 @@
       </div>
   
       <div class="controls">
-        <button class="btn" (click)="prev()" [disabled]="currentIndex===0">Назад</button>
-        <button class="btn" (click)="next()" [disabled]="currentIndex===questions.length-1">Далее</button>
-        <button class="btn" (click)="finish()" style="background:#2e7d32">Завершить</button>
+        <button class="btn"
+                (click)="prev()"
+                [disabled]="currentIndex===0">
+          Назад
+        </button>
+      
+        <button class="btn"
+                (click)="next()"
+                [disabled]="answers[currentIndex] === undefined || currentIndex===questions.length-1">
+          Далее
+        </button>
+      
+        <button class="btn finish"
+                (click)="finish()"
+                [disabled]="!allAnswered()">
+          Завершить
+        </button>
       </div>
   
       <div style="margin-top:8px">
