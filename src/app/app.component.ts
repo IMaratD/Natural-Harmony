@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component';
       <header class="top">
         <div class="brand">
           <div class="title">Natural Harmony</div>
-          <div class="subtitle">Мини-анализ питания и уровень энергии</div>
+          <div class="subtitle">Мини-анализ питания и уровня энергии</div>
         </div>
         <header-comp></header-comp>
       </header>
@@ -20,7 +20,7 @@ import { HeaderComponent } from './header/header.component';
         <router-outlet></router-outlet>
       </main>
 
-      <footer class="footer">Основано на открытых источниках и 14-летнем опыте автора (диабет 1 типа).</footer>
+      <footer class="footer">Основано на данных из открытых источников и более чем 14-летнем опыте автора (диабет 1 типа).</footer>
     </div>
   `,
   styleUrls: ['./app.component.scss']

@@ -15,12 +15,12 @@
           <li *ngFor="let r of result.recommendations">{{ r }}</li>
         </ul>
       </div>
+    </div>
   
       <div class="actions">
-        <button class="btn" (click)="downloadPdf()">Скачать PDF</button>
-        <button class="btn" (click)="backHome()">На главную</button>
+        <button class="btn" (click)="downloadPdf()">📄 Скачать PDF</button>
+        <button class="btn" (click)="backHome()">🏠  На главную</button>
       </div>
-    </div>
   </div>
   
   <ng-template #noData>

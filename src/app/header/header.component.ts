@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -8,4 +8,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {}
+
+export class HeaderComponent {
+  constructor(private router: Router) {}
+
+  startQuiz() {
+    // сбрасываем ответы старые перед новым прохождением
+    localStorage.removeItem('quizAnswers');
+    sessionStorage.removeItem('lastResult');
+    this.router.navigate(['/quiz']);
+  }
+}

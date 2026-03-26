@@ -1,0 +1,115 @@
+<div class="products-grid">
+
+    <input
+    #searchInput
+    type="text"
+    placeholder="Поиск..."
+    (input)="onSearch(searchInput.value); showSuggestions = true"/>
+
+<div class="categories">
+
+    <button
+      *ngFor="let c of categories"
+      (click)="selectedCategory = c"
+      [class.active]="c === selectedCategory"
+    >
+      {{ c }}
+    </button>
+  
+  </div>
+
+
+
+    <div class="card" *ngFor="let p of filteredProducts">
+  
+      <img [src]="p.image" alt="{{p.name}}" />
+  
+      <h3>{{ p.name }}</h3>
+  
+      <p>{{ p.variants[0].nutrientsPer100g.carbs }} г углеводов</p>
+
+      <p>
+        {{
+          ((p.variants[0].nutrientsPer100g.carbs - p.variants[0].nutrientsPer100g.fiber) / 12)
+          | number:'1.1-1'
+        }} ХЕ
+      </p>
+  
+      <!-- <button (click)="addSelectedToMeal(selectVariant, 50)">+50г</button>
+      <button (click)="addSelectedToMeal(p.variants[0], 100)">+100г</button> -->
+      
+      <button (click)="openDetails(p)">Подробнее</button>
+  
+</div>
+
+
+
+<div class="modal" *ngIf="selectedProduct as product" (click)="selectedProduct = undefined">
+
+    <div class="modal-content" (click)="$event.stopPropagation()">
+  
+      <h2>{{ product.name }}</h2>
+  
+      <img [src]="selectedVariant?.image" />
+  
+      <!-- 🔽 ВЫБОР ВАРИАНТА -->
+      <h3>Выбери вариант:</h3>
+  
+      <div class="variants">
+        <button
+          *ngFor="let v of product.variants"
+          (click)="selectVariant(v)"
+          [class.active]="v.id === selectedVariant?.id"
+        >
+          {{ v.name }}
+        </button>
+      </div>
+  
+      <!-- 🔽 ДАННЫЕ ПО ВЫБРАННОМУ ВАРИАНТУ -->
+      <div *ngIf="selectedVariant as v">
+  
+        <p>Углеводы: {{ v.nutrientsPer100g.carbs }} г</p>
+  
+        <p>
+          ХЕ:
+          {{
+            ((v.nutrientsPer100g.carbs - v.nutrientsPer100g.fiber) / 12)
+            | number:'1.1-1'
+          }}
+        </p>
+  
+      </div>
+  
+      <!-- 🔽 ГРАММЫ -->
+      <input
+        type="number"
+        [(ngModel)]="selectedGrams"
+        min="1"
+      />
+  
+      <!-- 🔽 КНОПКА -->
+      <button (click)="addSelectedToMeal()">
+        Добавить на стол
+      </button>
+  
+      <button (click)="selectedProduct = undefined">
+        Закрыть
+      </button>
+  
+    </div>
+  
+  </div>
+
+<hr />
+
+<h2>Текущий стол</h2>
+
+<div *ngFor="let item of mealItems; let i = index">
+  <p>
+    {{ item.variant.name }} — {{ item.grams }} г — {{ item.xe | number:'1.1-1' }} ХЕ
+  </p>
+  <button (click)="remove(i)">Удалить</button>
+</div>
+
+<h3>Итого: {{ totalXE | number:'1.1-1' }} ХЕ</h3>
+</div>

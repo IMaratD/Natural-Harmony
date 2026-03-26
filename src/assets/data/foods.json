@@ -1,0 +1,222 @@
+[
+    {
+      "id": "apple",
+      "name": "Яблоко",
+      "category": "Фрукты",
+      "searchTerms": ["яблоко", "apple", "фрукт"],
+      "variants": [
+        {
+          "id": "apple-avg",
+          "name": "Среднее",
+          "image": "assets/images/apple.jpg",
+          "nutrientsPer100g": { "protein": 0.3, 
+          "fat": 0.2, 
+          "carbs": 11.5, 
+          "fiber": 2.5 }
+        }
+      ]
+    },
+    {
+      "id": "banana",
+      "name": "Банан",
+      "category": "Фрукты",
+      "searchTerms": ["банан", "banana"],
+      "variants": [
+        {
+          "id": "banana-avg",
+          "name": "Среднее",
+          "image": "assets/images/banana.jpg",
+          "nutrientsPer100g": { "protein": 1.1, 
+          "fat": 0.3, 
+          "carbs": 23, 
+          "fiber": 2.6 }
+        }
+      ]
+    },
+    {
+      "id": "rice",
+      "name": "Рис",
+      "category": "Крупы",
+      "searchTerms": ["рис", "крупа"],
+      "variants": [
+        {
+          "id": "rice-white",
+          "name": "Белый",
+          "image": "assets/images/rice-white.jpg",
+          "nutrientsPer100g": { "protein": 7, 
+          "fat": 0.6, 
+          "carbs": 78, 
+          "fiber": 0.4 }
+        },
+        {
+          "id": "rice-brown",
+          "name": "Бурый",
+          "image": "assets/images/rice-brown.jpg",
+          "nutrientsPer100g": { "protein": 7.5, 
+          "fat": 2.7, 
+          "carbs": 77, 
+          "fiber": 3.5 }
+        }
+      ]
+    },
+    {
+      "id": "buckwheat",
+      "name": "Гречка",
+      "category": "Крупы",
+      "searchTerms": ["гречка"],
+      "variants": [
+        {
+          "id": "buckwheat-boiled",
+          "name": "Варёная",
+          "image": "assets/images/buckwheat-boiled.jpg",
+          "nutrientsPer100g": { "protein": 3.4, 
+          "fat": 1, 
+          "carbs": 20, 
+          "fiber": 2.7 }
+        },
+        {
+          "id": "dry",
+          "name": "Сухая",
+          "image": "assets/images/buckwheat-dry.jpg",
+          "nutrientsPer100g": {
+            "protein": 13, 
+            "fat": 3, 
+            "carbs": 70,
+            "fiber": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "chicken",
+      "name": "Курица",
+      "category": "Мясо",
+      "searchTerms": ["курица", "мясо"],
+      "variants": [
+        {
+          "id": "chicken-breast",
+          "name": "Грудка",
+          "image": "assets/images/chicken-breast.jpg",
+          "nutrientsPer100g": { "protein": 31, 
+          "fat": 3.6, 
+          "carbs": 0, 
+          "fiber": 0 }
+        }
+      ]
+    },
+    {
+      "id": "milk",
+      "name": "Молоко",
+      "category": "Молочные",
+      "searchTerms": ["молоко"],
+      "variants": [
+        {
+          "id": "milk-2-5",
+          "name": "2.5%",
+          "image": "assets/images/milk-2-5.jpg",
+          "nutrientsPer100g": { "protein": 3, 
+          "fat": 2.5, 
+          "carbs": 4.7, 
+          "fiber": 0 }
+        },
+        {
+          "id": "baked_4",
+          "name": "Топленое 4%",
+          "image": "assets/images/milk-4.jpg",
+          "nutrientsPer100g": {
+          "protein": 3, 
+          "fat": 4.0, 
+          "carbs": 4.8,
+          "fiber": 0 }
+        }
+      ]
+    },
+    {
+      "id": "kefir",
+      "name": "Кефир 2.5%",
+      "category": "Молочные",
+      "searchTerms": ["кефир"],
+      "variants": [
+        {
+          "id": "default",
+          "name": "Обычный",
+          "image": "assets/images/kefir.jpg",
+          "nutrientsPer100g": {
+            "protein": 3,  
+            "fat": 2.5,
+            "carbs": 4,
+            "fiber": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "ryazhenka",
+      "name": "Ряженка",
+      "category": "Молочные",
+      "searchTerms": ["ряженка"],
+      "variants": [
+        {
+          "id": "default",
+          "name": "Классическая",
+          "image": "assets/images/ryazhenka.jpg",
+          "nutrientsPer100g": {
+            "protein": 3,  
+            "fat": 2.5,
+            "carbs": 4.2,
+            "fiber": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "potato",
+      "name": "Картофель",
+      "category": "Овощи",
+      "searchTerms": ["картошка"],
+      "variants": [
+        {
+          "id": "boiled",
+          "name": "Вареный",
+          "image": "assets/images/potato_boiled.jpg",
+          "nutrientsPer100g": {
+            "protein": 2,
+            "fat": 0.1,
+            "carbs": 17,
+            "fiber": 2.2
+          }
+        },
+        {
+          "id": "fried",
+          "name": "Жареный",
+          "image": "assets/images/potato_fried.jpg",
+          "nutrientsPer100g": {
+            "protein": 2.5,  
+            "fat": 15,  
+            "carbs": 35,
+            "fiber": 3.8
+          }
+        }
+      ]
+    },
+    {
+      "id": "bread",
+      "name": "Хлеб",
+      "category": "Выпечка",
+      "searchTerms": ["хлеб"],
+      "variants": [
+        {
+          "id": "bread-white",
+          "name": "Белый",
+          "image": "assets/images/bread_white.jpg",
+          "nutrientsPer100g": { "protein": 8, "fat": 2.5, "carbs": 49, "fiber": 2.7 }
+        },
+        {
+          "id": "bread-rye",
+          "name": "Ржаной",
+          "image": "assets/images/bread_rye.jpg",
+          "nutrientsPer100g": { "protein": 6.6, "fat": 1.2, "carbs": 41, "fiber": 6 }
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,31 @@
+<div *ngFor="let item of items; let i = index">
+
+    <p>{{ item.variant.name }}</p>
+  
+    <input
+      type="number"
+      [value]="item.grams"
+      (change)="update(i, +$any($event.target).value)"
+    />
+  
+    <span>
+      {{ item.xe | number:'1.1-1' }} ХЕ
+    </span>
+  
+    <button (click)="remove(i)">Удалить</button>
+  
+    <p>Белки</p>
+<div class="bar">
+  <div class="fill" [style.width.%]="proteinProgress * 100"></div>
+</div>
+
+<p>Жиры</p>
+<div class="bar">
+  <div class="fill" [style.width.%]="fatProgress * 100"></div>
+</div>
+
+<p>Углеводы</p>
+<div class="bar">
+  <div class="fill" [style.width.%]="carbsProgress * 100"></div>
+</div>
+  </div>
