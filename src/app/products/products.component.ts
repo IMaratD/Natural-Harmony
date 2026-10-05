@@ -1,5 +1,5 @@
 import { FoodProduct, FoodVariant } from "../models/food.model";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MealService } from "../services/meal.service";
 import { FoodService } from "../services/food.service";
 import { CommonModule } from '@angular/common';
@@ -15,13 +15,39 @@ import { debounceTime } from 'rxjs/operators';
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.scss']
   })
-  export class ProductsComponent {
+  export class ProductsComponent implements OnInit {
   
     products: FoodProduct[] = [];
     selectedProduct?: FoodProduct;
-selectedVariant?: FoodVariant;
-selectedGrams: number = 100;
-  
+    selectedVariant?: FoodVariant;
+    selectedGrams = 100;
+    showInfoModal = false;
+    showAddModal = false;
+
+    openInfo(product: FoodProduct): void {
+      this.selectedProduct = product;
+      this.showInfoModal = true;
+    }
+    
+    closeInfo(): void {
+      this.showInfoModal = false;
+      this.selectedProduct = undefined;
+    }
+
+    openAdd(product: FoodProduct): void {
+      this.selectedProduct = product;
+      this.selectedVariant = product.variants[0];
+      this.selectedGrams = 100;
+    
+      this.showAddModal = true;
+    }
+    
+    closeAdd(): void {
+      this.showAddModal = false;
+      this.selectedProduct = undefined;
+      this.selectedVariant = undefined;
+    }
+
     constructor(
       private foodService: FoodService,
       private mealService: MealService
@@ -50,7 +76,7 @@ ngOnInit() {
         this.selectedGrams = 100;
     }
 
-    selectVariant(variant: FoodVariant) {
+    selectVariant(variant: FoodVariant): void {
         this.selectedVariant = variant;
     }
   
@@ -59,38 +85,51 @@ ngOnInit() {
         return value.toLowerCase().trim();
     }
 
-    addToMeal(product: FoodVariant, grams: number) {
-        this.mealService.addItem(product, grams);
+    // addToMeal(
+    //   product: FoodProduct,
+    //   variant: FoodVariant,
+    //   grams: number
+    // ) {
+    //   this.mealService.addItem(
+    //     product,
+    //     variant,
+    //     grams
+    //   );
+    // }
+    
+    addSelectedToMeal(): void {
+      if (!this.selectedProduct || !this.selectedVariant) {
+        return;
       }
+    
+      this.mealService.addItem(
+        this.selectedProduct,
+        this.selectedVariant,
+        this.selectedGrams
+      );
 
-    addSelectedToMeal() {
-        if (!this.selectedVariant) return;
-      
-        this.mealService.addItem(this.selectedVariant, this.selectedGrams);
-      
-        this.selectedProduct = undefined;
+      this.closeAdd();
     }
 
-    get mealItems() {
-        return this.mealService.getItems();
+    get selectedNutrition() {
+      if (!this.selectedVariant) {
+        return null;
       }
-      
-      get totalXE() {
-        return this.mealService.getSummary().xe;
-      }
-
-      remove(index: number) {
-        this.mealService.removeItem(index);
-      }
-
-      searchTerm: string = '';
-selectedCategory: string = 'Все';
-
-get categories(): string[] {
-    const all = this.products.map(p => p.category);
-    return ['Все', ...new Set(all)];
-  }
-
+    
+      return this.mealService.calculateNutrition(
+        this.selectedVariant,
+        this.selectedGrams
+      );
+    }
+    
+    searchTerm: string = '';
+    selectedCategory: string = 'Все';
+    
+    get categories(): string[] {
+      const all = this.products.map(p => p.category);
+      return ['Все', ...new Set(all)];
+    }
+    
   get filteredProducts(): FoodProduct[] {
     const term = this.normalize(this.searchTerm);
   

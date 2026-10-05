@@ -1,4 +1,7 @@
-export interface UserProfile {
+  export interface UserProfile {
+    name: string;
+    isDiabetic: boolean;
+  
     sex: 'male' | 'female';
     age: number;
     weight: number; // кг

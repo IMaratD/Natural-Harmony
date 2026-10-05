@@ -1,31 +1,236 @@
-<div *ngFor="let item of items; let i = index">
+<div *ngIf="items$ | async as items">
 
-    <p>{{ item.variant.name }}</p>
-  
+  <h2>Мой стол</h2>
+
+  <button
+    *ngIf="(items$ | async)?.length"
+    type="button"
+    (click)="clearMeal()"
+  >
+    Очистить стол
+  </button>
+
+<div
+  *ngFor="let item of items$ | async; let i = index"
+  class="meal-item"
+>
+
+  <div class="meal-item-info">
+
+    <h3>
+      {{ item.product.name }}
+    </h3>
+
+    <p>
+      {{ item.variant.name }}
+    </p>
+
+  </div>
+
+
+  <div class="meal-item-weight">
+
+    <label>
+      Вес, г
+    </label>
+
     <input
       type="number"
+      min="1"
       [value]="item.grams"
       (change)="update(i, +$any($event.target).value)"
     />
-  
-    <span>
-      {{ item.xe | number:'1.1-1' }} ХЕ
-    </span>
-  
-    <button (click)="remove(i)">Удалить</button>
-  
-    <p>Белки</p>
-<div class="bar">
-  <div class="fill" [style.width.%]="proteinProgress * 100"></div>
-</div>
 
-<p>Жиры</p>
-<div class="bar">
-  <div class="fill" [style.width.%]="fatProgress * 100"></div>
-</div>
-
-<p>Углеводы</p>
-<div class="bar">
-  <div class="fill" [style.width.%]="carbsProgress * 100"></div>
-</div>
   </div>
+
+
+  <div class="meal-item-xe">
+
+    {{ item.xe | number:'1.1-1' }} ХЕ
+
+  </div>
+
+
+  <div class="meal-item-actions">
+
+    <button
+      type="button"
+      (click)="openItemInfo(item)"
+      aria-label="Пищевая ценность"
+    >
+      ?
+    </button>
+
+    <button
+      type="button"
+      (click)="remove(i)"
+    >
+      Удалить
+    </button>
+
+  </div>
+
+</div>
+
+
+<div
+  *ngIf="showItemInfo && selectedItem"
+  class="modal-backdrop"
+  (click)="closeItemInfo()"
+>
+
+  <div
+    class="modal"
+    (click)="$event.stopPropagation()"
+  >
+
+    <button
+      type="button"
+      class="modal-close"
+      (click)="closeItemInfo()"
+    >
+      ×
+    </button>
+
+
+    <h2>
+      {{ selectedItem.product.name }}
+    </h2>
+
+
+    <p>
+      {{ selectedItem.variant.name }},
+      {{ selectedItem.grams }} г
+    </p>
+
+
+    <div
+      *ngIf="selectedItemNutrition"
+      class="nutrition-preview"
+    >
+
+      <h3>
+        Пищевая ценность
+      </h3>
+
+
+      <p>
+        Белки:
+        {{ selectedItemNutrition.nutrients.protein | number:'1.0-1' }} г
+      </p>
+
+
+      <p>
+        Жиры:
+        {{ selectedItemNutrition.nutrients.fat | number:'1.0-1' }} г
+      </p>
+
+
+      <p>
+        Углеводы:
+        {{ selectedItemNutrition.nutrients.carbs | number:'1.0-1' }} г
+      </p>
+
+
+      <p>
+        Клетчатка:
+        {{ selectedItemNutrition.nutrients.fiber | number:'1.0-1' }} г
+      </p>
+
+
+      <p>
+        Доступные углеводы:
+        {{ selectedItemNutrition.netCarbs | number:'1.0-1' }} г
+      </p>
+
+
+      <p>
+        ХЕ:
+        {{ selectedItemNutrition.xe | number:'1.0-1' }}
+      </p>
+
+
+      <p>
+        Калории:
+        {{ selectedItemNutrition.calories | number:'1.0-0' }} ккал
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div
+  *ngIf="items.length && warnings.length"
+  class="meal-warnings"
+>
+
+  <h3>
+    Что стоит учесть
+  </h3>
+
+
+  <div
+    *ngFor="let warning of warnings"
+    class="meal-warning"
+    [class.warning-low]="warning.severity === 'low'"
+    [class.warning-medium]="warning.severity === 'medium'"
+    [class.warning-high]="warning.severity === 'high'"
+  >
+
+    <div class="meal-warning-title">
+      {{ warning.title }}
+    </div>
+
+    <div class="meal-warning-message">
+      {{ warning.message }}
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ВНЕ цикла -->
+<div class="meal-summary">
+
+  <h3>Итого</h3>
+
+  <p>
+    Белки:
+    {{ summary.nutrients.protein | number:'1.0-1' }}
+  </p>
+
+  <p>
+    Жиры:
+    {{ summary.nutrients.fat | number:'1.0-1' }}
+  </p>
+
+  <p>
+    Углеводы:
+    {{ summary.nutrients.carbs | number:'1.0-1' }}
+  </p>
+
+  <p>
+    Клетчатка:
+    {{ summary.nutrients.fiber | number:'1.0-1' }}
+  </p>
+
+  <p>
+    Доступные углеводы:
+    {{ summary.netCarbs | number:'1.0-1' }}
+  </p>
+
+  <p>
+    ХЕ:
+    {{ summary.xe | number:'1.0-1' }}
+  </p>
+
+  <p>
+    Калории:
+    {{ summary.calories | number:'1.0-0' }}
+  </p>
+
+</div>

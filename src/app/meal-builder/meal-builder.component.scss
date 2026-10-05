@@ -1,0 +1,399 @@
+:host {
+    display: block;
+  }
+  
+  
+  /* =========================
+     Стол
+     ========================= */
+  
+  .meal-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  
+    padding: 16px;
+  
+    margin-bottom: 12px;
+  
+    border: 1px solid #ddd;
+    border-radius: 14px;
+  
+    background: #fff;
+  
+    transition:
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  
+  .meal-item:hover {
+    transform: translateY(-2px);
+  
+    box-shadow:
+      0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+  
+  
+  .meal-item-info {
+    flex: 1;
+  }
+  
+  
+  .meal-item-info h3 {
+    margin: 0 0 4px;
+  }
+  
+  
+  .meal-item-info p {
+    margin: 0;
+  
+    font-size: 14px;
+  
+    opacity: 0.7;
+  }
+  
+  
+  /* =========================
+     Вес
+     ========================= */
+  
+  .meal-item-weight {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  
+  .meal-item-weight label {
+    font-size: 13px;
+    opacity: 0.7;
+  }
+  
+  
+  .meal-item-weight input {
+    width: 90px;
+  
+    box-sizing: border-box;
+  
+    padding: 8px 10px;
+  
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  
+    font-size: 15px;
+  }
+  
+  
+  /* =========================
+     ХЕ
+     ========================= */
+  
+  .meal-item-xe {
+    min-width: 60px;
+  
+    font-weight: 600;
+  
+    text-align: center;
+  }
+  
+  
+  /* =========================
+     Кнопки
+     ========================= */
+  
+  .meal-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  
+  .meal-item-actions button {
+    padding: 8px 12px;
+  
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  
+    background: #fff;
+  
+    cursor: pointer;
+  
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+  
+  
+  .meal-item-actions button:hover {
+    background: #f3f3f3;
+  
+    transform: translateY(-1px);
+  }
+  
+  
+  /* Кнопка ? */
+  
+  .meal-item-actions button:first-child {
+    width: 34px;
+    height: 34px;
+  
+    padding: 0;
+  
+    border-radius: 50%;
+  
+    font-size: 17px;
+  }
+  
+  
+  /* =========================
+     Итого
+     ========================= */
+  
+  .meal-summary {
+    margin-top: 24px;
+  
+    padding: 20px;
+  
+    border: 1px solid #ddd;
+    border-radius: 14px;
+  
+    background: #fff;
+  }
+  
+  
+  .meal-summary h3 {
+    margin-top: 0;
+  }
+  
+  
+  .meal-summary p {
+    margin: 7px 0;
+  }
+  
+  
+  /* =========================
+     Модальное окно
+     ========================= */
+  
+  .modal-backdrop {
+    position: fixed;
+  
+    inset: 0;
+  
+    z-index: 2000;
+  
+    display: flex;
+  
+    align-items: center;
+    justify-content: center;
+  
+    padding: 20px;
+  
+    box-sizing: border-box;
+  
+    background: rgba(0, 0, 0, 0.45);
+  }
+  
+  
+  .modal {
+    position: relative;
+  
+    width: 100%;
+    max-width: 520px;
+  
+    max-height: 90vh;
+  
+    overflow-y: auto;
+  
+    box-sizing: border-box;
+  
+    padding: 24px;
+  
+    border-radius: 18px;
+  
+    background: #fff;
+  
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  /* =========================
+     Закрытие
+     ========================= */
+  
+  .modal-close {
+    position: absolute;
+  
+    top: 12px;
+    right: 12px;
+  
+    width: 34px;
+    height: 34px;
+  
+    padding: 0;
+  
+    border: 0;
+    border-radius: 50%;
+  
+    background: transparent;
+  
+    font-size: 24px;
+    line-height: 1;
+  
+    cursor: pointer;
+  }
+  
+  
+  .modal-close:hover {
+    background: #f2f2f2;
+  }
+  
+  
+  /* =========================
+     Пищевая ценность
+     ========================= */
+  
+  .nutrition-preview {
+    margin-top: 20px;
+  
+    padding: 16px;
+  
+    border-radius: 12px;
+  
+    background: #f7f7f7;
+  }
+  
+  
+  .nutrition-preview h3 {
+    margin-top: 0;
+  }
+  
+  
+  .nutrition-preview p {
+    margin: 7px 0;
+  }
+  
+  
+  /* =========================
+     Кнопка "Очистить стол"
+     ========================= */
+  
+  button {
+    cursor: pointer;
+  }
+  
+  
+  /* =========================
+     Мобильная версия
+     ========================= */
+  
+  @media (max-width: 600px) {
+  
+    .meal-item {
+      display: grid;
+  
+      grid-template-columns: 1fr auto;
+  
+      gap: 12px;
+    }
+  
+  
+    .meal-item-info {
+      grid-column: 1 / -1;
+    }
+  
+  
+    .meal-item-weight {
+      grid-column: 1;
+    }
+  
+  
+    .meal-item-xe {
+      grid-column: 2;
+  
+      align-self: center;
+    }
+  
+  
+    .meal-item-actions {
+      grid-column: 1 / -1;
+  
+      justify-content: flex-end;
+    }
+  
+  
+    .modal {
+      max-height: 85vh;
+  
+      padding: 20px;
+    }
+  
+}
+
+  /* =========================
+   Анализ стола
+   ========================= */
+
+.meal-warnings {
+    margin-top: 24px;
+  
+    padding: 20px;
+  
+    border: 1px solid #ddd;
+    border-radius: 14px;
+  
+    background: #fff;
+  }
+  
+  
+  .meal-warnings h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  
+  
+  .meal-warning {
+    padding: 12px 14px;
+  
+    margin-bottom: 10px;
+  
+    border-radius: 10px;
+  
+    background: #f7f7f7;
+  }
+  
+  
+  .meal-warning:last-child {
+    margin-bottom: 0;
+  }
+  
+  
+  .meal-warning-title {
+    margin-bottom: 4px;
+  
+    font-weight: 600;
+  }
+  
+  
+  .meal-warning-message {
+    font-size: 14px;
+  
+    opacity: 0.75;
+  }
+  
+  
+  .warning-low {
+    border-left: 4px solid #999;
+  }
+  
+  
+  .warning-medium {
+    border-left: 4px solid #777;
+  }
+  
+  
+  .warning-high {
+    border-left: 4px solid #444;
+  }

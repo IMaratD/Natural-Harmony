@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { UserProfile } from "../models/user-profile.model";
-import { Nutrients } from "../models/nutrients.model";
 
 @Injectable({ providedIn: 'root' })
 export class NutritionService {
@@ -50,19 +49,19 @@ export class NutritionService {
       case 'gain': return tdee + 300;
       default: return tdee;
     }
-}
-// const tdee = bmr * activityFactor;
-
-
-//   const proteinCalories = totalCalories * 0.2;
-// const fatCalories = totalCalories * 0.3;
-// const carbsCalories = totalCalories * 0.5;
-
-
-// const protein = proteinCalories / 4;
-// const fat = fatCalories / 9;
-// const carbs = carbsCalories / 4;
-
-
-
+    }
+    
+    // const tdee = bmr * activityFactor;
+    
+    
+    //   const proteinCalories = totalCalories * 0.2;
+    // const fatCalories = totalCalories * 0.3;
+    // const carbsCalories = totalCalories * 0.5;
+    
+    
+    // const protein = proteinCalories / 4;
+    // const fat = fatCalories / 9;
+    // const carbs = carbsCalories / 4;
+    
+    
 }

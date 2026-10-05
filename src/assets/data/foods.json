@@ -36,7 +36,7 @@
     {
       "id": "rice",
       "name": "Рис",
-      "category": "Крупы",
+      "category": "Крупы и макароны",
       "searchTerms": ["рис", "крупа"],
       "variants": [
         {
@@ -62,7 +62,7 @@
     {
       "id": "buckwheat",
       "name": "Гречка",
-      "category": "Крупы",
+      "category": "Крупы и макароны",
       "searchTerms": ["гречка"],
       "variants": [
         {
@@ -219,4 +219,315 @@
         }
       ]
     }
+    ,
+{
+  "id": "orange",
+  "name": "Апельсин",
+  "category": "Фрукты",
+  "searchTerms": ["апельсин", "orange", "цитрус", "фрукт"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Свежий",
+      "image": "assets/images/orange.jpg",
+      "nutrientsPer100g": {
+        "protein": 0.9,
+        "fat": 0.2,
+        "carbs": 8.3,
+        "fiber": 2.2
+      }
+    }
+  ]
+},
+{
+  "id": "pear",
+  "name": "Груша",
+  "category": "Фрукты",
+  "searchTerms": ["груша", "pear", "фрукт"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Свежая",
+      "image": "assets/images/pear.jpg",
+      "nutrientsPer100g": {
+        "protein": 0.4,
+        "fat": 0.1,
+        "carbs": 15.2,
+        "fiber": 3.1
+      }
+    }
+  ]
+},
+{
+  "id": "grapes",
+  "name": "Виноград",
+  "category": "Фрукты",
+  "searchTerms": ["виноград", "grapes", "ягоды", "фрукт"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Свежий",
+      "image": "assets/images/grapes.jpg",
+      "nutrientsPer100g": {
+        "protein": 0.7,
+        "fat": 0.2,
+        "carbs": 18.1,
+        "fiber": 0.9
+      }
+    }
+  ]
+},
+{
+  "id": "cucumber",
+  "name": "Огурец",
+  "category": "Овощи",
+  "searchTerms": ["огурец", "cucumber", "овощ"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Свежий",
+      "image": "assets/images/cucumber.jpg",
+      "nutrientsPer100g": {
+        "protein": 0.7,
+        "fat": 0.1,
+        "carbs": 3.6,
+        "fiber": 0.5
+      }
+    }
+  ]
+},
+{
+  "id": "tomato",
+  "name": "Помидор",
+  "category": "Овощи",
+  "searchTerms": ["помидор", "томат", "tomato", "овощ"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Свежий",
+      "image": "assets/images/tomato.jpg",
+      "nutrientsPer100g": {
+        "protein": 0.9,
+        "fat": 0.2,
+        "carbs": 3.9,
+        "fiber": 1.2
+      }
+    }
+  ]
+},
+{
+  "id": "carrot",
+  "name": "Морковь",
+  "category": "Овощи",
+  "searchTerms": ["морковь", "морковка", "carrot", "овощ"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Свежая",
+      "image": "assets/images/carrot.jpg",
+      "nutrientsPer100g": {
+        "protein": 0.9,
+        "fat": 0.2,
+        "carbs": 9.6,
+        "fiber": 2.8
+      }
+    }
+  ]
+},
+{
+  "id": "cabbage",
+  "name": "Капуста",
+  "category": "Овощи",
+  "searchTerms": ["капуста", "белокочанная", "cabbage", "овощ"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Белокочанная, свежая",
+      "image": "assets/images/cabbage.jpg",
+      "nutrientsPer100g": {
+        "protein": 1.3,
+        "fat": 0.1,
+        "carbs": 5.8,
+        "fiber": 2.5
+      }
+    }
+  ]
+},
+{
+  "id": "egg",
+  "name": "Яйцо",
+  "category": "Яйца",
+  "searchTerms": ["яйцо", "яйца", "egg"],
+  "variants": [
+    {
+      "id": "default",
+      "name": "Куриное",
+      "image": "assets/images/egg.jpg",
+      "nutrientsPer100g": {
+        "protein": 12.6,
+        "fat": 10.6,
+        "carbs": 1.1,
+        "fiber": 0
+      }
+    }
+  ]
+},
+{
+  "id": "beef",
+  "name": "Говядина",
+  "category": "Мясо",
+  "searchTerms": ["говядина", "мясо", "beef"],
+  "variants": [
+    {
+      "id": "lean",
+      "name": "Постная",
+      "image": "assets/images/beef.jpg",
+      "nutrientsPer100g": {
+        "protein": 26,
+        "fat": 10,
+        "carbs": 0,
+        "fiber": 0
+      }
+    }
+  ]
+},
+{
+  "id": "fish",
+  "name": "Рыба",
+  "category": "Рыба",
+  "searchTerms": ["рыба", "fish"],
+  "variants": [
+    {
+      "id": "white",
+      "name": "Белая",
+      "image": "assets/images/fish-white.jpg",
+      "nutrientsPer100g": {
+        "protein": 18,
+        "fat": 2,
+        "carbs": 0,
+        "fiber": 0
+      }
+    },
+    {
+      "id": "salmon",
+      "name": "Лосось",
+      "image": "assets/images/salmon.jpg",
+      "nutrientsPer100g": {
+        "protein": 20,
+        "fat": 13,
+        "carbs": 0,
+        "fiber": 0
+      }
+    }
+  ]
+},
+{
+  "id": "cottage-cheese",
+  "name": "Творог",
+  "category": "Молочные",
+  "searchTerms": ["творог", "cottage cheese"],
+  "variants": [
+    {
+      "id": "5-percent",
+      "name": "5%",
+      "image": "assets/images/cottage-cheese-5.jpg",
+      "nutrientsPer100g": {
+        "protein": 17,
+        "fat": 5,
+        "carbs": 1.8,
+        "fiber": 0
+      }
+    },
+    {
+      "id": "9-percent",
+      "name": "9%",
+      "image": "assets/images/cottage-cheese-9.jpg",
+      "nutrientsPer100g": {
+        "protein": 16,
+        "fat": 9,
+        "carbs": 1.8,
+        "fiber": 0
+      }
+    }
+  ]
+},
+{
+  "id": "yogurt",
+  "name": "Йогурт",
+  "category": "Молочные",
+  "searchTerms": ["йогурт", "yogurt"],
+  "variants": [
+    {
+      "id": "natural",
+      "name": "Натуральный",
+      "image": "assets/images/yogurt.jpg",
+      "nutrientsPer100g": {
+        "protein": 4,
+        "fat": 2.5,
+        "carbs": 4.5,
+        "fiber": 0
+      }
+    }
+  ]
+},
+{
+  "id": "oatmeal",
+  "name": "Овсянка",
+  "category": "Крупы и макароны",
+  "searchTerms": ["овсянка", "овсяная каша", "овсяные хлопья", "oatmeal"],
+  "variants": [
+    {
+      "id": "dry",
+      "name": "Сухая",
+      "image": "assets/images/oatmeal-dry.jpg",
+      "nutrientsPer100g": {
+        "protein": 12.3,
+        "fat": 6.1,
+        "carbs": 59.5,
+        "fiber": 8
+      }
+    },
+    {
+      "id": "boiled",
+      "name": "Варёная на воде",
+      "image": "assets/images/oatmeal-boiled.jpg",
+      "nutrientsPer100g": {
+        "protein": 2.5,
+        "fat": 1.5,
+        "carbs": 12,
+        "fiber": 1.7
+      }
+    }
+  ]
+},
+{
+  "id": "pasta",
+  "name": "Макароны",
+  "category": "Крупы и макароны",
+  "searchTerms": ["макароны", "паста", "pasta"],
+  "variants": [
+    {
+      "id": "dry",
+      "name": "Сухие",
+      "image": "assets/images/pasta-dry.jpg",
+      "nutrientsPer100g": {
+        "protein": 12,
+        "fat": 1.3,
+        "carbs": 70,
+        "fiber": 3
+      }
+    },
+    {
+      "id": "boiled",
+      "name": "Варёные",
+      "image": "assets/images/pasta-boiled.jpg",
+      "nutrientsPer100g": {
+        "protein": 5,
+        "fat": 1.1,
+        "carbs": 25,
+        "fiber": 1.8
+      }
+    }
+  ]
+}
   ]
